@@ -15,6 +15,7 @@
 		59E384F516B0CA6D00725C07 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59E384F316B0CA6D00725C07 /* MainMenu.xib */; };
 		59E384FC16B0CA9500725C07 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E384FB16B0CA9500725C07 /* QuartzCore.framework */; };
 		59E384FF16B0CB6E00725C07 /* IRMMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E384FE16B0CB6E00725C07 /* IRMMainView.m */; };
+		59E3850216B0E25D00725C07 /* IRMTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E3850116B0E25D00725C07 /* IRMTextLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		59E384FB16B0CA9500725C07 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		59E384FD16B0CB6E00725C07 /* IRMMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRMMainView.h; sourceTree = "<group>"; };
 		59E384FE16B0CB6E00725C07 /* IRMMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRMMainView.m; sourceTree = "<group>"; };
+		59E3850016B0E25D00725C07 /* IRMTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IRMTextLayer.h; path = CATextLayerLab/IRMTextLayer.h; sourceTree = SOURCE_ROOT; };
+		59E3850116B0E25D00725C07 /* IRMTextLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IRMTextLayer.m; path = CATextLayerLab/IRMTextLayer.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 		59E384E416B0CA6C00725C07 /* CATextLayerLab */ = {
 			isa = PBXGroup;
 			children = (
+				59E3850016B0E25D00725C07 /* IRMTextLayer.h */,
+				59E3850116B0E25D00725C07 /* IRMTextLayer.m */,
 				59E384F016B0CA6D00725C07 /* IRMAppDelegate.h */,
 				59E384F116B0CA6D00725C07 /* IRMAppDelegate.m */,
 				59E384F316B0CA6D00725C07 /* MainMenu.xib */,
@@ -178,6 +183,7 @@
 				59E384EB16B0CA6C00725C07 /* main.m in Sources */,
 				59E384F216B0CA6D00725C07 /* IRMAppDelegate.m in Sources */,
 				59E384FF16B0CB6E00725C07 /* IRMMainView.m in Sources */,
+				59E3850216B0E25D00725C07 /* IRMTextLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

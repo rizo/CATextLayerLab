@@ -6,8 +6,8 @@
 //
 //
 
-#import <Quartz/Quartz.h>
 #import "IRMMainView.h"
+#import "IRMTextLayer.h"
 
 #define $COLOR(...) CGColorCreateGenericRGB(__VA_ARGS__);
 #define $BLACK $COLOR(0.0f, 0.0f, 0.0f, 1.0f);
@@ -46,19 +46,7 @@
     [_rootLayer addSublayer:_containerLayer];
 
     // Text Layer
-    _textLayer = [CATextLayer layer];
-    _textLayer.string = @"A Sun That Never Sets";
-    _textLayer.backgroundColor = $BLACK;
-
-    CAConstraint *h = [CAConstraint constraintWithAttribute:kCAConstraintMidX
-                                                 relativeTo:@"superlayer"
-                                                  attribute:kCAConstraintMidX];
-    
-    CAConstraint *v = [CAConstraint constraintWithAttribute:kCAConstraintMidY
-                                                 relativeTo:@"superlayer"
-                                                  attribute:kCAConstraintMidY];
-    [_textLayer addConstraint:h];
-    [_textLayer addConstraint:v];
+    _textLayer = [[IRMTextLayer alloc] initWithString:@"A Sun That Never Sets"];
     [_containerLayer addSublayer:_textLayer];
 }
 
@@ -74,10 +62,8 @@
 
 
 
+
 @end
-
-
-
 
 
 

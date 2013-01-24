@@ -7,9 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "IRMTextLayer.h"
+
 
 @interface IRMMainView : NSView
 @property CALayer      *rootLayer;
 @property CALayer      *containerLayer;
-@property CATextLayer  *textLayer;
+@property IRMTextLayer *textLayer;
 @end
