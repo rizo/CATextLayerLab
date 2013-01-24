@@ -10,7 +10,6 @@
 		59ABF94C16B102A300C7B871 /* IRMNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 59ABF94B16B102A300C7B871 /* IRMNode.m */; };
 		59ABF94E16B10C3100C7B871 /* Grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 59ABF94D16B10C3100C7B871 /* Grid.png */; };
 		59ABF95116B1133E00C7B871 /* NSColor+IRMColorCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 59ABF95016B1133E00C7B871 /* NSColor+IRMColorCompatibility.m */; };
-		59ABF95916B1199C00C7B871 /* IRMTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59ABF95816B1199C00C7B871 /* IRMTestView.m */; };
 		59ABF95C16B1204600C7B871 /* IRMDiagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 59ABF95B16B1204600C7B871 /* IRMDiagram.m */; };
 		59E384DF16B0CA6C00725C07 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E384DE16B0CA6C00725C07 /* Cocoa.framework */; };
 		59E384E916B0CA6C00725C07 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59E384E716B0CA6C00725C07 /* InfoPlist.strings */; };
@@ -210,7 +209,6 @@
 				59E3850216B0E25D00725C07 /* IRMNodeLabel.m in Sources */,
 				59ABF94C16B102A300C7B871 /* IRMNode.m in Sources */,
 				59ABF95116B1133E00C7B871 /* NSColor+IRMColorCompatibility.m in Sources */,
-				59ABF95916B1199C00C7B871 /* IRMTestView.m in Sources */,
 				59ABF95C16B1204600C7B871 /* IRMDiagram.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

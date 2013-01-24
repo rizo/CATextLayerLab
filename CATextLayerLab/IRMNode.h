@@ -16,4 +16,5 @@
 - (id)initWithStateName:(NSString *)stateName
                  center:(CGPoint)center;
 
+- (void)moveBy:(CGSize) delta;
 @end

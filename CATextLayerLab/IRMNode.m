@@ -8,6 +8,14 @@
 
 #import "IRMNode.h"
 
+
+CGPoint IRMTranslateCGPointBy(CGPoint point, CGSize delta)
+{
+	point.x += delta.width;
+	point.y += delta.height;
+	return point;
+}
+
 @implementation IRMNode
 
 - (id)initWithStateName:(NSString *)stateName
@@ -61,5 +69,12 @@
 {
     $$    
 }
+
+
+- (void)moveBy:(CGSize) delta
+{
+	self.position = IRMTranslateCGPointBy(self.position, delta);
+}
+
 
 @end
