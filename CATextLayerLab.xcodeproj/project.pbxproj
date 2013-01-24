@@ -13,6 +13,8 @@
 		59E384EF16B0CA6D00725C07 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59E384ED16B0CA6D00725C07 /* Credits.rtf */; };
 		59E384F216B0CA6D00725C07 /* IRMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E384F116B0CA6D00725C07 /* IRMAppDelegate.m */; };
 		59E384F516B0CA6D00725C07 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59E384F316B0CA6D00725C07 /* MainMenu.xib */; };
+		59E384FC16B0CA9500725C07 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E384FB16B0CA9500725C07 /* QuartzCore.framework */; };
+		59E384FF16B0CB6E00725C07 /* IRMMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E384FE16B0CB6E00725C07 /* IRMMainView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,9 @@
 		59E384F016B0CA6D00725C07 /* IRMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRMAppDelegate.h; sourceTree = "<group>"; };
 		59E384F116B0CA6D00725C07 /* IRMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRMAppDelegate.m; sourceTree = "<group>"; };
 		59E384F416B0CA6D00725C07 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		59E384FB16B0CA9500725C07 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		59E384FD16B0CB6E00725C07 /* IRMMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRMMainView.h; sourceTree = "<group>"; };
+		59E384FE16B0CB6E00725C07 /* IRMMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRMMainView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59E384FC16B0CA9500725C07 /* QuartzCore.framework in Frameworks */,
 				59E384DF16B0CA6C00725C07 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +69,7 @@
 		59E384DD16B0CA6C00725C07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				59E384FB16B0CA9500725C07 /* QuartzCore.framework */,
 				59E384DE16B0CA6C00725C07 /* Cocoa.framework */,
 				59E384E016B0CA6C00725C07 /* Other Frameworks */,
 			);
@@ -85,6 +92,8 @@
 				59E384F016B0CA6D00725C07 /* IRMAppDelegate.h */,
 				59E384F116B0CA6D00725C07 /* IRMAppDelegate.m */,
 				59E384F316B0CA6D00725C07 /* MainMenu.xib */,
+				59E384FD16B0CB6E00725C07 /* IRMMainView.h */,
+				59E384FE16B0CB6E00725C07 /* IRMMainView.m */,
 				59E384E516B0CA6C00725C07 /* Supporting Files */,
 			);
 			path = CATextLayerLab;
@@ -168,6 +177,7 @@
 			files = (
 				59E384EB16B0CA6C00725C07 /* main.m in Sources */,
 				59E384F216B0CA6D00725C07 /* IRMAppDelegate.m in Sources */,
+				59E384FF16B0CB6E00725C07 /* IRMMainView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
