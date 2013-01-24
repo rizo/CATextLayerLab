@@ -9,5 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface IRMMainView : NSView
-
+@property CALayer      *rootLayer;
+@property CALayer      *containerLayer;
+@property CATextLayer  *textLayer;
 @end

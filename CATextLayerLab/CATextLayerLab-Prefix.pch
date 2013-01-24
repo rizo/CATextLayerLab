@@ -5,3 +5,8 @@
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
 #endif
+
+#define $$        NSLog(@"** %s **", __PRETTY_FUNCTION__);
+#define $(s, ...) NSLog(@"DEBUG: %s: %@", __PRETTY_FUNCTION__, \
+[NSString stringWithFormat:(s), ##__VA_ARGS__] )
+
