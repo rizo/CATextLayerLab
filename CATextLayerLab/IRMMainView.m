@@ -20,19 +20,6 @@
 
 @implementation IRMMainView
 
-- (id)initWithFrame:(NSRect)frame
-{
-    $$
-    
-    if (self = [super initWithFrame:frame])
-    {
-        ;
-    }
-
-    return self;
-}
-
-
 - (void)awakeFromNib
 {
     $$
@@ -41,13 +28,35 @@
     self.wantsLayer = YES;
 
     // Diagram Layer
-    _diagram = [CALayer layer];
+    _diagram = [CATiledLayer layer];
+    _diagram.delegate = self;
     _diagram.name = @"diagram";
-    _diagram.backgroundColor = CGColorCreateGenericRGB(1.0f, 1.0f, 1.0f, 0.6f);
     self.layer = _diagram;
+    _diagram.needsDisplayOnBoundsChange = YES;
 
     self.nodes = [NSMutableArray array];
 
+}
+
+
+- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)context
+{
+    $$
+    
+    NSImage *bg = [NSImage imageNamed:@"Grid"];
+    CGContextDrawTiledImage(context, CGRectMake(0,0,80,80), [self nsImageToCGImageRef:bg]);
+}
+
+
+- (CGImageRef)nsImageToCGImageRef:(NSImage*)image;
+{
+    NSData * imageData = [image TIFFRepresentation];
+    CGImageRef imageRef;
+    if(!imageData)
+        return nil;
+    CGImageSourceRef imageSource = CGImageSourceCreateWithData((__bridge CFDataRef)imageData, NULL);
+    imageRef = CGImageSourceCreateImageAtIndex(imageSource, 0, NULL);
+    return imageRef;
 }
 
 
@@ -91,55 +100,8 @@
         IRMNode *node = [[IRMNode alloc] initWithStateName:stateName
                                                     center:nodeCenter];
         [self.nodes addObject:node];
-        $(@"%@", self.nodes);
         [_diagram addSublayer:node];
     }
-
-    [self setNeedsDisplay:YES];
-}
-
-
-- (void)drawrect:(NSRect)rect
-{
-    $$
-
-    // Obtain and save the current context.
-//    CGContextRef context = (CGContextRef)[[NSGraphicsContext currentContext]
-//                                          graphicsPort];
-//    CGContextSaveGState(context);
-//
-//    // Set the color space.
-//    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-//    CGContextSetFillColorSpace(context, colorSpace);
-//    CGContextSetStrokeColorSpace(context, colorSpace);
-//    CGColorSpaceRelease(colorSpace);
-
-    // Draw the background.
-    NSString *imageName = [[NSBundle mainBundle] pathForResource:@"Grid" ofType:@"png"];
-    NSImage *bg = [[NSImage alloc] initWithContentsOfFile:imageName];
-    NSColor *backgroundColor = [NSColor colorWithPatternImage:bg];
-    [backgroundColor set];
-    NSRectFill(rect);
-
-//
-//    NSString *imageName = [[NSBundle mainBundle] pathForResource:@"Grid" ofType:@"png"];
-//    NSColor *tileColor = [NSColor colorWithPatternImage:[[NSImage alloc] initWithContentsOfFile:imageName]];
-//
-//    CGColorRef tileCGColor = [tileColor IRMCGColor];
-//    if (CGColorSpaceGetModel(colorSpace) == kCGColorSpaceModelPattern)
-//    {
-//        CGFloat alpha = 1.0f;
-//        CGContextSetFillPattern(context, CGColorGetPattern(tileCGColor), &alpha);
-//    }
-//    else
-//    {
-//        CGContextSetFillColor(context, CGColorGetComponents(tileCGColor));
-//    }
-//
-//    CGContextFillRect(context, self.bounds);
-//    
-//    // Restore the context.
-//    CGContextRestoreGState(context);
 }
 
 
@@ -167,6 +129,8 @@
         {
             if (!CGPointEqualToPoint(lastPoint, currentPoint))
             {
+                node.opacity = 0.5f;
+                node.zPosition = 100;
                 [CATransaction begin];
                 [CATransaction setValue:(id)kCFBooleanTrue
                                  forKey:kCATransactionDisableActions];
@@ -178,7 +142,8 @@
             lastPoint = currentPoint;
         }
     }
-
+    node.opacity = 1.0f;
+    
     if (isMoving)
     {
 //        [self]

@@ -11,7 +11,7 @@
 
 
 @interface IRMMainView : NSView
-@property CALayer      *diagram;
+@property CATiledLayer      *diagram;
 @property CALayer      *containerLayer;
 @property NSMutableArray *nodes;
 @end
