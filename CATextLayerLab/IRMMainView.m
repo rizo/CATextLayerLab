@@ -32,6 +32,7 @@
 
     // Container Layer
     _containerLayer = [CALayer layer];
+    _containerLayer.name = @"containerLayer";
     _containerLayer.position = (CGPoint) {0,0};
     _containerLayer.backgroundColor = $COLOR(0.0f, 0.9f, 0.0f, 1.0f);
     _containerLayer.frame = CGRectInset(self.frame, 50.0f, 50.0f);
@@ -50,6 +51,7 @@
     [_containerLayer addSublayer:_textLayer];
 }
 
+
 - (void)drawRect:(NSRect)dirtyRect
 {
     $$
@@ -59,6 +61,81 @@
 }
 
 
+- (void)mouseDown:(NSEvent *)event
+{
+    $$
+
+    CGPoint pointOfClick = NSPointToCGPoint([self convertPoint:[event locationInWindow]
+                                                      fromView:nil]);
+    CALayer *hitLayer = [self.layer hitTest:pointOfClick];
+
+    // Pass the control to the layer.
+    if (hitLayer != nil)
+    {
+        if ([hitLayer isKindOfClass:[IRMTextLayer class]])
+        {
+            if ([event clickCount] > 1)
+            {
+                $(@"DBLClick on Text");
+                [(IRMTextLayer *)hitLayer mouseDown:event];
+            }
+            else
+                [self moveContainerLayerWithEvent:event];
+        }
+
+        else if (hitLayer.name == @"containerLayer")
+        {
+            $(@"Hit layer == containerLayer");
+            [self moveContainerLayerWithEvent:event];
+        }
+    }
+
+    // Start the selection.
+    else
+        $(@"TODO: Start the selection.");
+}
+
+
+- (void)moveContainerLayerWithEvent:(NSEvent *)event
+{
+    $$
+
+    CGPoint currentPoint;
+    CGPoint lastPoint = [self convertPoint:[event locationInWindow] fromView:nil];
+    BOOL didMove = NO, isMoving = NO;
+
+    while ([event type] != NSLeftMouseUp)
+    {
+        event = [[self window] nextEventMatchingMask:(NSLeftMouseDraggedMask |
+                                                      NSLeftMouseUpMask)];
+        currentPoint = [self convertPoint:[event locationInWindow] fromView:nil];
+        if (!isMoving && ((fabs(currentPoint.x - lastPoint.x) >= 5.0f) ||
+                          (fabs(currentPoint.y - lastPoint.y) >= 5.0f)))
+        {
+            isMoving = YES;
+        }
+
+        if (isMoving)
+        {
+            if (!CGPointEqualToPoint(lastPoint, currentPoint))
+            {
+                [CATransaction begin];
+                [CATransaction setValue:(id)kCFBooleanTrue
+                                 forKey:kCATransactionDisableActions];
+                _containerLayer.position = currentPoint;
+                [CATransaction commit];
+
+                didMove = YES;
+            }
+            lastPoint = currentPoint;
+        }
+    }
+
+    if (isMoving)
+    {
+//        [self]
+    }
+}
 
 
 

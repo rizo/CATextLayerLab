@@ -12,4 +12,6 @@
 
 - (id)initWithString:(NSString *)string;
 
+- (void)mouseDown:(NSEvent *)event;
+
 @end

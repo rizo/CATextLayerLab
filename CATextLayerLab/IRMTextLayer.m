@@ -13,6 +13,8 @@
 
 - (id)initWithString:(NSString *)string
 {
+    $$
+
     if (self = [super init])
     {
         self.string = string;
@@ -30,6 +32,15 @@
     }
 
     return self;
+}
+
+
+- (void)mouseDown:(NSEvent *)event
+{
+    $$
+
+    $(@"TODO: Handle mouseDown on text.");
+
 }
 
 @end
