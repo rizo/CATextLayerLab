@@ -7,11 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "IRMTextLayer.h"
+#import "IRMNodeLabel.h"
 
 
 @interface IRMMainView : NSView
-@property CALayer      *rootLayer;
+@property CALayer      *diagram;
 @property CALayer      *containerLayer;
-@property IRMTextLayer *textLayer;
+@property NSMutableArray *nodes;
 @end

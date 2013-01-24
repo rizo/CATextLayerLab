@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59ABF94C16B102A300C7B871 /* IRMNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 59ABF94B16B102A300C7B871 /* IRMNode.m */; };
+		59ABF94E16B10C3100C7B871 /* Grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 59ABF94D16B10C3100C7B871 /* Grid.png */; };
+		59ABF95116B1133E00C7B871 /* NSColor+IRMColorCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 59ABF95016B1133E00C7B871 /* NSColor+IRMColorCompatibility.m */; };
 		59E384DF16B0CA6C00725C07 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E384DE16B0CA6C00725C07 /* Cocoa.framework */; };
 		59E384E916B0CA6C00725C07 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59E384E716B0CA6C00725C07 /* InfoPlist.strings */; };
 		59E384EB16B0CA6C00725C07 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E384EA16B0CA6C00725C07 /* main.m */; };
@@ -15,10 +18,15 @@
 		59E384F516B0CA6D00725C07 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59E384F316B0CA6D00725C07 /* MainMenu.xib */; };
 		59E384FC16B0CA9500725C07 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E384FB16B0CA9500725C07 /* QuartzCore.framework */; };
 		59E384FF16B0CB6E00725C07 /* IRMMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E384FE16B0CB6E00725C07 /* IRMMainView.m */; };
-		59E3850216B0E25D00725C07 /* IRMTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E3850116B0E25D00725C07 /* IRMTextLayer.m */; };
+		59E3850216B0E25D00725C07 /* IRMNodeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E3850116B0E25D00725C07 /* IRMNodeLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		59ABF94A16B102A300C7B871 /* IRMNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRMNode.h; sourceTree = "<group>"; };
+		59ABF94B16B102A300C7B871 /* IRMNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRMNode.m; sourceTree = "<group>"; };
+		59ABF94D16B10C3100C7B871 /* Grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Grid.png; path = CATextLayerLab/Grid.png; sourceTree = SOURCE_ROOT; };
+		59ABF94F16B1133E00C7B871 /* NSColor+IRMColorCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSColor+IRMColorCompatibility.h"; path = "CATextLayerLab/NSColor+IRMColorCompatibility.h"; sourceTree = "<group>"; };
+		59ABF95016B1133E00C7B871 /* NSColor+IRMColorCompatibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSColor+IRMColorCompatibility.m"; path = "CATextLayerLab/NSColor+IRMColorCompatibility.m"; sourceTree = "<group>"; };
 		59E384DA16B0CA6C00725C07 /* CATextLayerLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CATextLayerLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E384DE16B0CA6C00725C07 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		59E384E116B0CA6C00725C07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -35,8 +43,8 @@
 		59E384FB16B0CA9500725C07 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		59E384FD16B0CB6E00725C07 /* IRMMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRMMainView.h; sourceTree = "<group>"; };
 		59E384FE16B0CB6E00725C07 /* IRMMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRMMainView.m; sourceTree = "<group>"; };
-		59E3850016B0E25D00725C07 /* IRMTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IRMTextLayer.h; path = CATextLayerLab/IRMTextLayer.h; sourceTree = SOURCE_ROOT; };
-		59E3850116B0E25D00725C07 /* IRMTextLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IRMTextLayer.m; path = CATextLayerLab/IRMTextLayer.m; sourceTree = SOURCE_ROOT; };
+		59E3850016B0E25D00725C07 /* IRMNodeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IRMNodeLabel.h; path = CATextLayerLab/IRMNodeLabel.h; sourceTree = SOURCE_ROOT; };
+		59E3850116B0E25D00725C07 /* IRMNodeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IRMNodeLabel.m; path = CATextLayerLab/IRMNodeLabel.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +63,8 @@
 		59E384CF16B0CA6C00725C07 = {
 			isa = PBXGroup;
 			children = (
+				59ABF94F16B1133E00C7B871 /* NSColor+IRMColorCompatibility.h */,
+				59ABF95016B1133E00C7B871 /* NSColor+IRMColorCompatibility.m */,
 				59E384E416B0CA6C00725C07 /* CATextLayerLab */,
 				59E384DD16B0CA6C00725C07 /* Frameworks */,
 				59E384DB16B0CA6C00725C07 /* Products */,
@@ -92,8 +102,11 @@
 		59E384E416B0CA6C00725C07 /* CATextLayerLab */ = {
 			isa = PBXGroup;
 			children = (
-				59E3850016B0E25D00725C07 /* IRMTextLayer.h */,
-				59E3850116B0E25D00725C07 /* IRMTextLayer.m */,
+				59ABF94A16B102A300C7B871 /* IRMNode.h */,
+				59ABF94B16B102A300C7B871 /* IRMNode.m */,
+				59ABF94D16B10C3100C7B871 /* Grid.png */,
+				59E3850016B0E25D00725C07 /* IRMNodeLabel.h */,
+				59E3850116B0E25D00725C07 /* IRMNodeLabel.m */,
 				59E384F016B0CA6D00725C07 /* IRMAppDelegate.h */,
 				59E384F116B0CA6D00725C07 /* IRMAppDelegate.m */,
 				59E384F316B0CA6D00725C07 /* MainMenu.xib */,
@@ -170,6 +183,7 @@
 				59E384E916B0CA6C00725C07 /* InfoPlist.strings in Resources */,
 				59E384EF16B0CA6D00725C07 /* Credits.rtf in Resources */,
 				59E384F516B0CA6D00725C07 /* MainMenu.xib in Resources */,
+				59ABF94E16B10C3100C7B871 /* Grid.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,7 +197,9 @@
 				59E384EB16B0CA6C00725C07 /* main.m in Sources */,
 				59E384F216B0CA6D00725C07 /* IRMAppDelegate.m in Sources */,
 				59E384FF16B0CB6E00725C07 /* IRMMainView.m in Sources */,
-				59E3850216B0E25D00725C07 /* IRMTextLayer.m in Sources */,
+				59E3850216B0E25D00725C07 /* IRMNodeLabel.m in Sources */,
+				59ABF94C16B102A300C7B871 /* IRMNode.m in Sources */,
+				59ABF95116B1133E00C7B871 /* NSColor+IRMColorCompatibility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

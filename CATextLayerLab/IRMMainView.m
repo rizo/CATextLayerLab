@@ -7,7 +7,9 @@
 //
 
 #import "IRMMainView.h"
-#import "IRMTextLayer.h"
+#import "IRMNode.h"
+#import "IRMNodeLabel.h"
+#import "NSColor+IRMColorCompatibility.h"
 
 #define $COLOR(...) CGColorCreateGenericRGB(__VA_ARGS__);
 #define $BLACK $COLOR(0.0f, 0.0f, 0.0f, 1.0f);
@@ -18,6 +20,19 @@
 
 @implementation IRMMainView
 
+- (id)initWithFrame:(NSRect)frame
+{
+    $$
+    
+    if (self = [super initWithFrame:frame])
+    {
+        ;
+    }
+
+    return self;
+}
+
+
 - (void)awakeFromNib
 {
     $$
@@ -25,39 +40,14 @@
     // View Setup
     self.wantsLayer = YES;
 
-    // Root Layer
-    _rootLayer = [CALayer layer];
-    _rootLayer.backgroundColor = $COLOR(0.0f, 0.0f, 1.0f, 0.8f);
-    self.layer = _rootLayer;
+    // Diagram Layer
+    _diagram = [CALayer layer];
+    _diagram.name = @"diagram";
+    _diagram.backgroundColor = CGColorCreateGenericRGB(1.0f, 1.0f, 1.0f, 0.6f);
+    self.layer = _diagram;
 
-    // Container Layer
-    _containerLayer = [CALayer layer];
-    _containerLayer.name = @"containerLayer";
-    _containerLayer.position = (CGPoint) {0,0};
-    _containerLayer.backgroundColor = $COLOR(0.0f, 0.9f, 0.0f, 1.0f);
-    _containerLayer.frame = CGRectInset(self.frame, 50.0f, 50.0f);
-    _containerLayer.borderColor = $WHITE;
-    _containerLayer.cornerRadius = 20.0f;
-    _containerLayer.masksToBounds = NO;
-    _containerLayer.shadowColor = $BLACK;
-    _containerLayer.shadowOpacity = 0.65;
-    _containerLayer.shadowRadius = 6.0;
-    _containerLayer.shadowOffset = (CGSize) { 10, 10 };
-    _containerLayer.layoutManager = [CAConstraintLayoutManager layoutManager];
-    [_rootLayer addSublayer:_containerLayer];
+    self.nodes = [NSMutableArray array];
 
-    // Text Layer
-    _textLayer = [[IRMTextLayer alloc] initWithString:@"A Sun That Never Sets"];
-    [_containerLayer addSublayer:_textLayer];
-}
-
-
-- (void)drawRect:(NSRect)dirtyRect
-{
-    $$
-
-    [[NSColor blueColor] setFill];
-    NSRectFill(dirtyRect);
 }
 
 
@@ -70,33 +60,91 @@
     CALayer *hitLayer = [self.layer hitTest:pointOfClick];
 
     // Pass the control to the layer.
-    if (hitLayer != nil)
+    if (hitLayer != nil && hitLayer.name != @"diagram")
     {
-        if ([hitLayer isKindOfClass:[IRMTextLayer class]])
+        if ([hitLayer isKindOfClass:[IRMNodeLabel class]])
         {
             if ([event clickCount] > 1)
             {
-                $(@"DBLClick on Text");
-                [(IRMTextLayer *)hitLayer mouseDown:event];
+                [(IRMNodeLabel *)hitLayer mouseDown:event];
             }
             else
-                [self moveContainerLayerWithEvent:event];
+            {
+                [self moveNode:((IRMNode *)hitLayer.superlayer) withEvent:event];
+            }
         }
 
-        else if (hitLayer.name == @"containerLayer")
+        else if ([hitLayer isKindOfClass:[IRMNode class]])
         {
-            $(@"Hit layer == containerLayer");
-            [self moveContainerLayerWithEvent:event];
+            [self moveNode:(IRMNode *)hitLayer withEvent:event];
         }
+
+        else
+            $(@"Impossible: Wrong layer...");
     }
 
-    // Start the selection.
+    // Start the selection or create a node.
     else
-        $(@"TODO: Start the selection.");
+    {
+        NSString *stateName = [NSString stringWithFormat:@"s%ld", [self.nodes count]];
+        CGPoint nodeCenter = [self convertPoint:[event locationInWindow] fromView:nil];
+        IRMNode *node = [[IRMNode alloc] initWithStateName:stateName
+                                                    center:nodeCenter];
+        [self.nodes addObject:node];
+        $(@"%@", self.nodes);
+        [_diagram addSublayer:node];
+    }
+
+    [self setNeedsDisplay:YES];
 }
 
 
-- (void)moveContainerLayerWithEvent:(NSEvent *)event
+- (void)drawrect:(NSRect)rect
+{
+    $$
+
+    // Obtain and save the current context.
+//    CGContextRef context = (CGContextRef)[[NSGraphicsContext currentContext]
+//                                          graphicsPort];
+//    CGContextSaveGState(context);
+//
+//    // Set the color space.
+//    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+//    CGContextSetFillColorSpace(context, colorSpace);
+//    CGContextSetStrokeColorSpace(context, colorSpace);
+//    CGColorSpaceRelease(colorSpace);
+
+    // Draw the background.
+    NSString *imageName = [[NSBundle mainBundle] pathForResource:@"Grid" ofType:@"png"];
+    NSImage *bg = [[NSImage alloc] initWithContentsOfFile:imageName];
+    NSColor *backgroundColor = [NSColor colorWithPatternImage:bg];
+    [backgroundColor set];
+    NSRectFill(rect);
+
+//
+//    NSString *imageName = [[NSBundle mainBundle] pathForResource:@"Grid" ofType:@"png"];
+//    NSColor *tileColor = [NSColor colorWithPatternImage:[[NSImage alloc] initWithContentsOfFile:imageName]];
+//
+//    CGColorRef tileCGColor = [tileColor IRMCGColor];
+//    if (CGColorSpaceGetModel(colorSpace) == kCGColorSpaceModelPattern)
+//    {
+//        CGFloat alpha = 1.0f;
+//        CGContextSetFillPattern(context, CGColorGetPattern(tileCGColor), &alpha);
+//    }
+//    else
+//    {
+//        CGContextSetFillColor(context, CGColorGetComponents(tileCGColor));
+//    }
+//
+//    CGContextFillRect(context, self.bounds);
+//    
+//    // Restore the context.
+//    CGContextRestoreGState(context);
+}
+
+
+- (void)moveNode:(IRMNode *)node
+       withEvent:(NSEvent *)event
 {
     $$
 
@@ -122,7 +170,7 @@
                 [CATransaction begin];
                 [CATransaction setValue:(id)kCFBooleanTrue
                                  forKey:kCATransactionDisableActions];
-                _containerLayer.position = currentPoint;
+                node.position = currentPoint;
                 [CATransaction commit];
 
                 didMove = YES;

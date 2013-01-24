@@ -1,14 +1,15 @@
 //
-//  IRMTextLayer.m
+//  IRMNodeLabel.m
 //  CATextLayerLab
 //
 //  Created by Rizo Isrof on 1/24/13.
 //
 //
 
-#import "IRMTextLayer.h"
+#import "IRMNodeLabel.h"
 
-@implementation IRMTextLayer
+
+@implementation IRMNodeLabel
 
 
 - (id)initWithString:(NSString *)string
@@ -18,7 +19,13 @@
     if (self = [super init])
     {
         self.string = string;
-        self.backgroundColor = CGColorCreateGenericRGB(0.0f, 0.0f, 0.0f, 1.0f);
+#ifdef NODE_LABEL_DEBUG
+        self.borderWidth = 1.0f;
+        self.borderColor = CGColorCreateGenericRGB(1.0f, 0.0f, 0.0f, 1.0f);
+#endif
+        self.font = CGFontCreateWithFontName(CFSTR("Verdana"));
+        self.fontSize = 23.0f;
+        self.foregroundColor = CGColorCreateGenericRGB(0.0f, 0.0f, 0.0f, 1.0f);
 
         CAConstraint *h = [CAConstraint constraintWithAttribute:kCAConstraintMidX
                                                      relativeTo:@"superlayer"
@@ -38,9 +45,6 @@
 - (void)mouseDown:(NSEvent *)event
 {
     $$
-
-    $(@"TODO: Handle mouseDown on text.");
-
 }
 
 @end
